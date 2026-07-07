@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Team Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=11">
+</head>
+
+<body>
+    <!-- Global 3D ambient floating orbs (behind everything) -->
+    <div class="orb-layer" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+    </div>
+
+    <div class="app-container">
+        <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Creative Agency</h2>
+                <button id="sidebar-close" class="sidebar-close-btn" aria-label="Close Sidebar">×</button>
+            </div>
+            <ul class="sidebar-menu">
+                <li data-target="dashboard-section" class="active">
+                    <span class="menu-icon">⬡</span> Dashboard
+                </li>
+                <li data-target="projects-section">
+                    <span class="menu-icon">◈</span> Projects
+                </li>
+                <li data-target="team-section">
+                    <span class="menu-icon">◉</span> Team Members
+                </li>
+                <li data-target="settings-section">
+                    <span class="menu-icon">◎</span> Settings
+                </li>
+            </ul>
+            <!-- Sidebar decorative orb -->
+            <div class="sidebar-orb" aria-hidden="true"></div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header>
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="btn-toggle" aria-label="Open Sidebar">☰</button>
+                    <button id="back-btn" class="btn-secondary hidden">← Back</button>
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+                <button id="theme-toggle" class="btn-toggle">☀ / ☾</button>
+            </header>
+
+            <main class="content-wrapper">
+
+                <!-- ═══════════ DASHBOARD SECTION ═══════════ -->
+                <section id="dashboard-section" class="page-section active-section">
+                    <!-- Parallax background for dashboard -->
+                    <div class="section-parallax-bg dashboard-bg-var" data-parallax="0.4">
+                    </div>
+                    <div class="section-parallax-overlay"></div>
+                    <div class="section-inner">
+                        <div class="dashboard-hero-card glass-panel">
+                            <div class="hero-floating-img" data-parallax="0.2">
+                                <img src="Assests/dashboard_hero.png?v=2" alt="Abstract design" crossorigin="anonymous">
+                            </div>
+                            <div class="hero-content">
+                                <span class="hero-tag">✦ Welcome Back</span>
+                                <h2>Design the Future</h2>
+                                <p class="text-muted">Your Creative Agency control center. Oversee projects, connect with your team, and coordinate tasks seamlessly.</p>
+                                <button class="btn-primary" onclick="document.querySelector('[data-target=\'team-section\']').click()">Meet the Team →</button>
+                            </div>
+                        </div>
+
+                        <!-- What We Do (Raw text on background) -->
+                        <div class="dashboard-about-raw">
+                            <div class="about-text">
+                                <h2>What We Do</h2>
+                                <p>We craft premium digital products, translating complex workflows into elegant user interfaces. From prototyping to launching production-ready systems, our team ensures every line of code and every pixel aligns with your business goals.</p>
+                                <p>Combining design aesthetics with cutting-edge front-end technology, we engineer high-performance web applications that load instantly and scale effortlessly. We collaborate closely with you to deliver modern, robust, and intuitive digital solutions.</p>
+                            </div>
+                            <div class="about-img-container interactive-3d">
+                                <img src="Assests/portfolio_metrics.jpg?v=2" alt="Projects Portfolio" class="about-mockup-img">
+                            </div>
+                        </div>
+
+                        <div class="dashboard-metrics-grid">
+                            <div class="dashboard-card glass-panel interactive-3d">
+                                <div class="card-icon">📁</div>
+                                <div class="card-data">
+                                    <h3>Active Projects</h3>
+                                    <p class="metric-number">12</p>
+                                    <span class="metric-trend positive">↑ 2 New this week</span>
+                                </div>
+                            </div>
+                            <div class="dashboard-card glass-panel interactive-3d">
+                                <div class="card-icon">👥</div>
+                                <div class="card-data">
+                                    <h3>Team Online</h3>
+                                    <p class="metric-number">4 / 4</p>
+                                    <span class="metric-trend active">● All members active</span>
+                                </div>
+                            </div>
+                            <div class="dashboard-card glass-panel interactive-3d">
+                                <div class="card-icon">⏱</div>
+                                <div class="card-data">
+                                    <h3>Hours Logged</h3>
+                                    <p class="metric-number">1,240 h</p>
+                                    <span class="metric-trend positive">↑ 12.4% vs last month</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <footer class="app-footer">
+                            <p class="footer-title">CREATIVE DIGITAL EXCELLENCE DEFINED</p>
+                            <p class="footer-info">HQ: 123 Creative Plaza, Sector Y, Lahore, Pakistan</p>
+                            <p class="footer-info">Tel: +92 300 1234567 | Email: hello@creativeagency.com</p>
+                            <div class="footer-links">
+                                <a href="#">About Us</a>
+                                <a href="#">Privacy Protocols</a>
+                                <a href="#">Terms of Service</a>
+                            </div>
+                            <p class="footer-copyright">© 2026 Creative Agency. All rights reserved.</p>
+                        </footer>
+                    </div>
+                </section>
+
+                <!-- ═══════════ PROJECTS SECTION ═══════════ -->
+                <section id="projects-section" class="page-section">
+                    <div class="section-parallax-bg projects-bg-var" data-parallax="0.35">
+                    </div>
+                    <div class="section-parallax-overlay dark-overlay"></div>
+                    <div class="section-inner">
+                        <div class="projects-header glass-panel interactive-3d">
+                            <div class="projects-header-text">
+                                <span class="hero-tag">◈ Active</span>
+                                <h2>Your Projects</h2>
+                                <p class="text-muted">Manage, monitor and collaborate on all creative deliverables.</p>
+                            </div>
+                            <div class="projects-header-img" data-parallax="0.15">
+                                <img src="Assests/dashboard_bg.png?v=4" alt="Creative work" crossorigin="anonymous">
+                            </div>
+                        </div>
+                        <div class="projects-list-full">
+                            <div class="project-card-3d glass-panel interactive-3d">
+                                <div class="project-card-img">
+                                    <img src="Assests/project_ecommerce.png" alt="Project" crossorigin="anonymous">
+                                </div>
+                                <div class="project-card-body">
+                                    <span class="project-tag">Web Design</span>
+                                    <h3>E-Commerce Redesign</h3>
+                                    <p class="text-muted">A complete overhaul of a major retail client's online storefront with premium UX flows.</p>
+                                    <div class="project-meta">
+                                        <span>Progress: <b>78%</b></span>
+                                        <div class="project-bar"><div class="project-bar-fill" style="width:78%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card-3d glass-panel interactive-3d">
+                                <div class="project-card-img">
+                                    <img src="Assests/project_fintech.png" alt="Project" crossorigin="anonymous">
+                                </div>
+                                <div class="project-card-body">
+                                    <span class="project-tag">Mobile App</span>
+                                    <h3>FinTech Dashboard</h3>
+                                    <p class="text-muted">Award-winning mobile banking app interface with real-time data visualization.</p>
+                                    <div class="project-meta">
+                                        <span>Progress: <b>95%</b></span>
+                                        <div class="project-bar"><div class="project-bar-fill" style="width:95%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card-3d glass-panel interactive-3d">
+                                <div class="project-card-img">
+                                    <img src="Assests/project_aichatbot.png" alt="Project" crossorigin="anonymous">
+                                </div>
+                                <div class="project-card-body">
+                                    <span class="project-tag">AI Tool</span>
+                                    <h3>AI Chatbot Interface</h3>
+                                    <p class="text-muted">Enterprise-level chat interface for large-language-model AI assistants.</p>
+                                    <div class="project-meta">
+                                        <span>Progress: <b>42%</b></span>
+                                        <div class="project-bar"><div class="project-bar-fill" style="width:42%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <footer class="app-footer">
+                            <p class="footer-title">CREATIVE DIGITAL EXCELLENCE DEFINED</p>
+                            <p class="footer-info">HQ: 123 Creative Plaza, Sector Y, Lahore, Pakistan</p>
+                            <p class="footer-info">Tel: +92 300 1234567 | Email: hello@creativeagency.com</p>
+                            <div class="footer-links">
+                                <a href="#">About Us</a>
+                                <a href="#">Privacy Protocols</a>
+                                <a href="#">Terms of Service</a>
+                            </div>
+                            <p class="footer-copyright">© 2026 Creative Agency. All rights reserved.</p>
+                        </footer>
+                    </div>
+                </section>
+
+                <!-- ═══════════ TEAM SECTION ═══════════ -->
+                <section id="team-section" class="page-section">
+                    <div class="section-parallax-bg team-bg-var" data-parallax="0.3">
+                    </div>
+                    <div class="section-parallax-overlay"></div>
+                    <div class="section-inner">
+                        <div class="team-section-header">
+                            <span class="hero-tag">◉ Meet The Team</span>
+                            <h2>Our Creative Minds</h2>
+                            <p class="text-muted">Hover to reveal the real faces behind the sketches</p>
+                        </div>
+                        <div class="team-grid">
+
+                            <!-- Maseera -->
+                            <div class="team-card interactive-3d" data-userid="maseera">
+                                <div class="image-container">
+                                    <img src="Assests/Maseera.png" alt="Maseera Arshed" class="team-img base-img">
+                                    <canvas class="ai-canvas"></canvas>
+                                </div>
+                                <div class="member-info">
+                                    <h3>Maseera Arshed</h3>
+                                    <p>Lead Developer</p>
+                                </div>
+                            </div>
+
+                            <!-- Ahmed Majeed -->
+                            <div class="team-card interactive-3d" data-userid="ahmed">
+                                <div class="image-container">
+                                    <img src="Assests/ahmed.png" alt="Ahmed Majeed" class="team-img base-img" crossorigin="anonymous">
+                                    <canvas class="ai-canvas"></canvas>
+                                </div>
+                                <div class="member-info">
+                                    <h3>Ahmed Majeed</h3>
+                                    <p>UI/UX Designer</p>
+                                </div>
+                            </div>
+
+                            <!-- Habiba -->
+                            <div class="team-card interactive-3d" data-userid="habiba">
+                                <div class="image-container">
+                                    <img src="Assests/habiba.jpeg" alt="Habiba Faisal" class="team-img base-img">
+                                    <canvas class="ai-canvas"></canvas>
+                                </div>
+                                <div class="member-info">
+                                    <h3>Habiba Faisal</h3>
+                                    <p>Project Manager</p>
+                                </div>
+                            </div>
+
+                            <!-- Mahalaka -->
+                            <div class="team-card interactive-3d" data-userid="mahalaka">
+                                <div class="image-container">
+                                    <img src="Assests/mahalaka.jpeg" alt="Mahalaka Faisal" class="team-img base-img">
+                                    <canvas class="ai-canvas"></canvas>
+                                </div>
+                                <div class="member-info">
+                                    <h3>Mahalaka Faisal</h3>
+                                    <p>Frontend Developer</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <!-- Footer -->
+                        <footer class="app-footer">
+                            <p class="footer-title">CREATIVE DIGITAL EXCELLENCE DEFINED</p>
+                            <p class="footer-info">HQ: 123 Creative Plaza, Sector Y, Lahore, Pakistan</p>
+                            <p class="footer-info">Tel: +92 300 1234567 | Email: hello@creativeagency.com</p>
+                            <div class="footer-links">
+                                <a href="#">About Us</a>
+                                <a href="#">Privacy Protocols</a>
+                                <a href="#">Terms of Service</a>
+                            </div>
+                            <p class="footer-copyright">© 2026 Creative Agency. All rights reserved.</p>
+                        </footer>
+                    </div>
+                </section>
+
+                <!-- Profile Section (Hidden by default) -->
+                <section id="profile-section" class="page-section">
+                    <div class="profile-header-banner"></div>
+                    <div class="profile-content-wrapper">
+                        <div class="profile-main-info">
+                            <div class="profile-avatar">
+                                <img id="profile-img" src="" alt="Profile Picture">
+                            </div>
+                            <div class="profile-text">
+                                <h2 id="profile-name">Name</h2>
+                                <p id="profile-role" class="role-badge">Role</p>
+                            </div>
+                        </div>
+                        <div class="profile-details-grid">
+                            <div class="glass-panel">
+                                <h3>About</h3>
+                                <p id="profile-bio" class="text-muted">Bio goes here...</p>
+                            </div>
+                            <div class="glass-panel">
+                                <h3>Key Skills</h3>
+                                <ul id="profile-skills" class="skills-list"></ul>
+                            </div>
+                            <div class="glass-panel full-width">
+                                <h3>Recent Projects</h3>
+                                <div id="profile-projects" class="projects-list"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <footer class="app-footer">
+                            <p class="footer-title">CREATIVE DIGITAL EXCELLENCE DEFINED</p>
+                            <p class="footer-info">HQ: 123 Creative Plaza, Sector Y, Lahore, Pakistan</p>
+                            <p class="footer-info">Tel: +92 300 1234567 | Email: hello@creativeagency.com</p>
+                            <div class="footer-links">
+                                <a href="#">About Us</a>
+                                <a href="#">Privacy Protocols</a>
+                                <a href="#">Terms of Service</a>
+                            </div>
+                            <p class="footer-copyright">© 2026 Creative Agency. All rights reserved.</p>
+                        </footer>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings-section" class="page-section">
+                    <div class="section-inner">
+                        <div class="glass-panel interactive-3d">
+                            <h2>Settings</h2>
+                            <p class="text-muted">Account settings and preferences.</p>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <footer class="app-footer">
+                            <p class="footer-title">CREATIVE DIGITAL EXCELLENCE DEFINED</p>
+                            <p class="footer-info">HQ: 123 Creative Plaza, Sector Y, Lahore, Pakistan</p>
+                            <p class="footer-info">Tel: +92 300 1234567 | Email: hello@creativeagency.com</p>
+                            <div class="footer-links">
+                                <a href="#">About Us</a>
+                                <a href="#">Privacy Protocols</a>
+                                <a href="#">Terms of Service</a>
+                            </div>
+                            <p class="footer-copyright">© 2026 Creative Agency. All rights reserved.</p>
+                        </footer>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
