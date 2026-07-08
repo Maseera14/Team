@@ -17,8 +17,11 @@ function showSection(targetId, title) {
 
     backBtn.classList.toggle('hidden', targetId !== 'profile-section');
 
-    // Re-run parallax on scroll when section changes
-    setTimeout(updateParallax, 50);
+    // Re-run parallax and reveal when section changes
+    setTimeout(() => {
+        updateParallax();
+        initScrollReveal();
+    }, 50);
 }
 
 menuItems.forEach(item => {
@@ -293,7 +296,11 @@ function updateParallax() {
     });
 }
 
-mainContent.addEventListener('scroll', updateParallax, { passive: true });
+mainContent.addEventListener('scroll', () => {
+    updateParallax();
+    const header = document.querySelector('header');
+    if (header) header.classList.toggle('scrolled', mainContent.scrollTop > 20);
+}, { passive: true });
 
 // 3. Mouse-based parallax: images subtly follow the mouse cursor
 function initMouseParallax() {
@@ -339,6 +346,285 @@ function initOrbTracking() {
 }
 
 // ═══════════════════════════════════════════
+//  SCROLL REVEAL
+// ═══════════════════════════════════════════
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal-on-scroll:not(.revealed)');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, root: mainContent });
+
+    reveals.forEach(el => observer.observe(el));
+}
+
+// ═══════════════════════════════════════════
+//  ANIMATED COUNTERS
+// ═══════════════════════════════════════════
+function animateCounter(el, target, duration = 1800) {
+    const start = performance.now();
+    const suffix = el.dataset.suffix || '';
+    const hasComma = target >= 1000;
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(target * eased);
+        el.textContent = (hasComma ? current.toLocaleString() : current) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+}
+
+function initCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.count, 10);
+                if (!isNaN(target)) animateCounter(el, target);
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5, root: mainContent });
+
+    counters.forEach(el => observer.observe(el));
+}
+
+// ═══════════════════════════════════════════
+//  CONTACT FORM
+// ═══════════════════════════════════════════
+function handleContactSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+    }, 3000);
+}
+window.handleContactSubmit = handleContactSubmit;
+
+// ═══════════════════════════════════════════
+//  PROGRESS BAR ANIMATION ON PROJECT CARDS
+// ═══════════════════════════════════════════
+function initProgressBars() {
+    const bars = document.querySelectorAll('.project-bar-fill');
+    bars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => { bar.style.width = width; }, 300);
+                    observer.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.5, root: mainContent });
+        observer.observe(bar);
+    });
+}
+
+// ═══════════════════════════════════════════
+//  CONVERSION FUNNEL
+// ═══════════════════════════════════════════
+const funnelState = {
+    step: 1,
+    service: '',
+    budget: '',
+    timeline: '',
+    name: '',
+    email: '',
+    phone: '',
+    notes: ''
+};
+
+function openFunnel() {
+    const overlay = document.getElementById('funnel-overlay');
+    if (!overlay) return;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.querySelector('.main-content')?.classList.add('blur-active');
+    if (mainContent) mainContent.style.overflow = 'hidden';
+    goToFunnelStep(1);
+}
+
+function closeFunnel() {
+    const overlay = document.getElementById('funnel-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.querySelector('.main-content')?.classList.remove('blur-active');
+    if (mainContent) mainContent.style.overflow = '';
+}
+
+function goToFunnelStep(step) {
+    funnelState.step = step;
+    document.querySelectorAll('.funnel-step').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.funnelStep, 10) === step);
+    });
+    document.querySelectorAll('.funnel-step-dot').forEach(dot => {
+        const dotStep = parseInt(dot.dataset.step, 10);
+        dot.classList.remove('active', 'done');
+        if (dotStep < step) dot.classList.add('done');
+        else if (dotStep === step) dot.classList.add('active');
+    });
+    const fill = document.getElementById('funnel-progress-fill');
+    if (fill) fill.style.width = `${(step / 4) * 100}%`;
+}
+
+function funnelNext(fromStep) {
+    if (fromStep === 1) {
+        const selected = document.querySelector('input[name="funnel-service"]:checked');
+        if (!selected) {
+            shakeFunnelStep(1);
+            return;
+        }
+        funnelState.service = selected.value;
+        goToFunnelStep(2);
+    } else if (fromStep === 2) {
+        if (!funnelState.budget || !funnelState.timeline) {
+            shakeFunnelStep(2);
+            return;
+        }
+        goToFunnelStep(3);
+    } else if (fromStep === 3) {
+        const name = document.getElementById('funnel-name')?.value.trim();
+        const email = document.getElementById('funnel-email')?.value.trim();
+        if (!name || !email) {
+            shakeFunnelStep(3);
+            return;
+        }
+        funnelState.name = name;
+        funnelState.email = email;
+        funnelState.phone = document.getElementById('funnel-phone')?.value.trim() || '';
+        funnelState.notes = document.getElementById('funnel-notes')?.value.trim() || '';
+        renderFunnelSummary();
+        goToFunnelStep(4);
+        markFunnelConverted();
+    }
+}
+
+function funnelBack(fromStep) {
+    goToFunnelStep(fromStep - 1);
+}
+
+function shakeFunnelStep(step) {
+    const el = document.querySelector(`.funnel-step[data-funnel-step="${step}"]`);
+    if (!el) return;
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = 'funnelShake 0.4s ease';
+}
+
+function renderFunnelSummary() {
+    const summary = document.getElementById('funnel-summary');
+    if (!summary) return;
+    summary.innerHTML = `
+        <strong>Service:</strong> ${funnelState.service}<br>
+        <strong>Budget:</strong> ${funnelState.budget}<br>
+        <strong>Timeline:</strong> ${funnelState.timeline}<br>
+        <strong>Name:</strong> ${funnelState.name}<br>
+        <strong>Email:</strong> ${funnelState.email}
+        ${funnelState.phone ? `<br><strong>Phone:</strong> ${funnelState.phone}` : ''}
+        ${funnelState.notes ? `<br><strong>Notes:</strong> ${funnelState.notes}` : ''}
+    `;
+    prefillContactForm();
+}
+
+function prefillContactForm() {
+    const nameEl = document.getElementById('contact-name');
+    const emailEl = document.getElementById('contact-email');
+    const subjectEl = document.getElementById('contact-subject');
+    const messageEl = document.getElementById('contact-message');
+    if (nameEl) nameEl.value = funnelState.name;
+    if (emailEl) emailEl.value = funnelState.email;
+    if (subjectEl) subjectEl.value = `${funnelState.service} — ${funnelState.budget}`;
+    if (messageEl) {
+        messageEl.value = `Project: ${funnelState.service}\nBudget: ${funnelState.budget}\nTimeline: ${funnelState.timeline}${funnelState.notes ? '\n\n' + funnelState.notes : ''}`;
+    }
+}
+
+function markFunnelConverted() {
+    document.querySelectorAll('.funnel-stage').forEach(s => s.classList.remove('funnel-converted'));
+    document.querySelector('.funnel-stage-5')?.classList.add('funnel-converted');
+}
+
+function initFunnelChips() {
+    document.querySelectorAll('.funnel-chips').forEach(group => {
+        group.querySelectorAll('.funnel-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                group.querySelectorAll('.funnel-chip').forEach(c => c.classList.remove('selected'));
+                chip.classList.add('selected');
+                const key = group.id === 'funnel-budget' ? 'budget' : 'timeline';
+                funnelState[key] = chip.dataset.value;
+            });
+        });
+    });
+}
+
+function initFunnelStages() {
+    const actions = {
+        explore: () => mainContent.scrollTo({ top: 0, behavior: 'smooth' }),
+        services: () => document.querySelector('.services-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+        projects: () => document.querySelector('[data-target="projects-section"]')?.click(),
+        team: () => document.querySelector('[data-target="team-section"]')?.click(),
+        convert: () => openFunnel()
+    };
+    document.querySelectorAll('.funnel-stage').forEach(stage => {
+        stage.addEventListener('click', () => {
+            const action = stage.dataset.funnelAction;
+            if (actions[action]) actions[action]();
+        });
+    });
+}
+
+function initStickyFunnelBar() {
+    const bar = document.getElementById('funnel-sticky-bar');
+    if (!bar || localStorage.getItem('funnel-bar-dismissed')) return;
+
+    mainContent.addEventListener('scroll', () => {
+        if (localStorage.getItem('funnel-bar-dismissed')) return;
+        const show = mainContent.scrollTop > 400;
+        bar.classList.toggle('visible', show);
+        bar.setAttribute('aria-hidden', !show);
+    }, { passive: true });
+}
+
+function closeStickyBar() {
+    const bar = document.getElementById('funnel-sticky-bar');
+    if (bar) {
+        bar.classList.remove('visible');
+        bar.classList.add('dismissed');
+        localStorage.setItem('funnel-bar-dismissed', '1');
+    }
+}
+
+document.getElementById('funnel-overlay')?.addEventListener('click', (e) => {
+    if (e.target.id === 'funnel-overlay') closeFunnel();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeFunnel();
+});
+
+window.openFunnel = openFunnel;
+window.closeFunnel = closeFunnel;
+window.funnelNext = funnelNext;
+window.funnelBack = funnelBack;
+window.closeStickyBar = closeStickyBar;
+
+// ═══════════════════════════════════════════
 //  INIT ON LOAD
 // ═══════════════════════════════════════════
 function initAll() {
@@ -346,6 +632,12 @@ function initAll() {
     init3DTilt();
     initMouseParallax();
     initOrbTracking();
+    initScrollReveal();
+    initCounters();
+    initProgressBars();
+    initFunnelChips();
+    initFunnelStages();
+    initStickyFunnelBar();
     updateParallax();
 }
 

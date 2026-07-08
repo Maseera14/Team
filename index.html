@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuralStack - Home</title>
+    <meta name="description" content="NeuralStack — Premium software house in Lahore, Pakistan. Web development, mobile apps, UI/UX design, and AI solutions.">
+    <title>NeuralStack — Software House | Web & Mobile Development</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=20">
 </head>
 
 <body>
@@ -44,13 +45,13 @@
                             <span class="menu-icon">◉</span> Team Members
                         </li>
                         <li data-target="settings-section">
-                            <span class="menu-icon">◎</span> Settings
+                            <span class="menu-icon">◎</span> Contact
                         </li>
                     </ul>
                 </nav>
 
                 <div class="header-right">
-                    <!-- Theme toggle button removed -->
+                    <button class="btn-primary header-cta" onclick="openFunnel()">Get Started</button>
                 </div>
             </header>
 
@@ -69,15 +70,41 @@
                                 <img src="Assests/dashboard_hero.png?v=2" alt="Abstract design" crossorigin="anonymous">
                             </div>
                             <div class="hero-content">
-                                <span class="hero-tag">✦ Welcome Back</span>
-                                <h2>Design the Future</h2>
-                                <p class="text-muted">Your NeuralStack control center. Oversee projects, connect with your team, and coordinate tasks seamlessly.</p>
-                                <button class="btn-primary" onclick="document.querySelector('[data-target=\'team-section\']').click()">Meet the Team →</button>
+                                <span class="hero-tag">✦ Software House · Lahore, PK</span>
+                                <h2>We Build <span class="gradient-text">Digital Products</span> That Scale</h2>
+                                <p class="text-muted">NeuralStack is a full-service software house crafting premium web apps, mobile experiences, and AI-powered solutions for ambitious brands worldwide.</p>
+                                <div class="hero-actions">
+                                    <button class="btn-primary" onclick="document.querySelector('[data-target=\'projects-section\']').click()">View Our Work →</button>
+                                    <button class="btn-outline" onclick="document.querySelector('[data-target=\'team-section\']').click()">Meet the Team</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trust Bar -->
+                        <div class="trust-bar reveal-on-scroll">
+                            <div class="trust-item">
+                                <span class="trust-number" data-count="50">0</span><span class="trust-suffix">+</span>
+                                <span class="trust-label">Projects Delivered</span>
+                            </div>
+                            <div class="trust-divider"></div>
+                            <div class="trust-item">
+                                <span class="trust-number" data-count="120">0</span><span class="trust-suffix">+</span>
+                                <span class="trust-label">Countries Served</span>
+                            </div>
+                            <div class="trust-divider"></div>
+                            <div class="trust-item">
+                                <span class="trust-number" data-count="98">0</span><span class="trust-suffix">%</span>
+                                <span class="trust-label">Client Satisfaction</span>
+                            </div>
+                            <div class="trust-divider"></div>
+                            <div class="trust-item">
+                                <span class="trust-number" data-count="4">0</span>
+                                <span class="trust-label">Expert Team Members</span>
                             </div>
                         </div>
 
                         <!-- What We Do (Raw text on background) -->
-                        <div class="dashboard-about-raw">
+                        <div class="dashboard-about-raw reveal-on-scroll">
                             <div class="about-text">
                                 <h2>What We Do</h2>
                                 <p>We craft premium digital products, translating complex workflows into elegant user interfaces. From prototyping to launching production-ready systems, our team ensures every line of code and every pixel aligns with your business goals.</p>
@@ -89,7 +116,7 @@
                         </div>
 
                         <!-- What is Our Impact? (Alternating layout with Image Left, Text Right) -->
-                        <div class="dashboard-about-raw dashboard-impact-raw">
+                        <div class="dashboard-about-raw dashboard-impact-raw reveal-on-scroll">
                             <div class="about-img-container interactive-3d">
                                 <img src="Assests/impact_team.png" alt="Our Impact Team" class="about-mockup-img impact-mockup-img">
                             </div>
@@ -100,15 +127,15 @@
                         </div>
 
                         <div class="dashboard-metrics-grid">
-                            <div class="dashboard-card glass-panel interactive-3d">
+                            <div class="dashboard-card glass-panel interactive-3d reveal-on-scroll">
                                 <div class="card-icon">📁</div>
                                 <div class="card-data">
                                     <h3>Active Projects</h3>
-                                    <p class="metric-number">12</p>
+                                    <p class="metric-number" data-count="12">0</p>
                                     <span class="metric-trend positive">↑ 2 New this week</span>
                                 </div>
                             </div>
-                            <div class="dashboard-card glass-panel interactive-3d">
+                            <div class="dashboard-card glass-panel interactive-3d reveal-on-scroll">
                                 <div class="card-icon">👥</div>
                                 <div class="card-data">
                                     <h3>Team Online</h3>
@@ -116,14 +143,242 @@
                                     <span class="metric-trend active">● All members active</span>
                                 </div>
                             </div>
-                            <div class="dashboard-card glass-panel interactive-3d">
+                            <div class="dashboard-card glass-panel interactive-3d reveal-on-scroll">
                                 <div class="card-icon">⏱</div>
                                 <div class="card-data">
                                     <h3>Hours Logged</h3>
-                                    <p class="metric-number">1,240 h</p>
+                                    <p class="metric-number" data-count="1240" data-suffix=" h">0</p>
                                     <span class="metric-trend positive">↑ 12.4% vs last month</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Services Section -->
+                        <div class="services-section reveal-on-scroll">
+                            <div class="section-heading">
+                                <span class="hero-tag">◈ Our Expertise</span>
+                                <h2>Services We Offer</h2>
+                                <p class="text-muted">End-to-end digital solutions tailored to your business goals</p>
+                            </div>
+                            <div class="services-grid">
+                                <div class="service-card glass-panel interactive-3d">
+                                    <div class="service-icon">🌐</div>
+                                    <h3>Web Development</h3>
+                                    <p>High-performance, responsive web applications built with modern frameworks and best practices.</p>
+                                </div>
+                                <div class="service-card glass-panel interactive-3d">
+                                    <div class="service-icon">📱</div>
+                                    <h3>Mobile Apps</h3>
+                                    <p>Native and cross-platform mobile experiences that users love — from concept to App Store.</p>
+                                </div>
+                                <div class="service-card glass-panel interactive-3d">
+                                    <div class="service-icon">🎨</div>
+                                    <h3>UI/UX Design</h3>
+                                    <p>User-centered design that converts. Wireframes, prototypes, and pixel-perfect interfaces.</p>
+                                </div>
+                                <div class="service-card glass-panel interactive-3d">
+                                    <div class="service-icon">🤖</div>
+                                    <h3>AI Solutions</h3>
+                                    <p>Intelligent chatbots, automation tools, and LLM integrations for enterprise workflows.</p>
+                                </div>
+                                <div class="service-card glass-panel interactive-3d">
+                                    <div class="service-icon">☁️</div>
+                                    <h3>Cloud & DevOps</h3>
+                                    <p>Scalable cloud infrastructure, CI/CD pipelines, and deployment strategies that just work.</p>
+                                </div>
+                                <div class="service-card glass-panel interactive-3d">
+                                    <div class="service-icon">💡</div>
+                                    <h3>Consulting</h3>
+                                    <p>Technical strategy, architecture reviews, and digital transformation guidance from experts.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack Marquee -->
+                        <div class="tech-marquee-wrapper reveal-on-scroll">
+                            <p class="tech-marquee-label">Technologies We Master</p>
+                            <div class="tech-marquee">
+                                <div class="tech-marquee-track">
+                                    <span class="tech-badge">React</span>
+                                    <span class="tech-badge">Node.js</span>
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">Figma</span>
+                                    <span class="tech-badge">AWS</span>
+                                    <span class="tech-badge">Docker</span>
+                                    <span class="tech-badge">MongoDB</span>
+                                    <span class="tech-badge">PostgreSQL</span>
+                                    <span class="tech-badge">Next.js</span>
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">OpenAI</span>
+                                    <!-- duplicate for seamless loop -->
+                                    <span class="tech-badge">React</span>
+                                    <span class="tech-badge">Node.js</span>
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">Figma</span>
+                                    <span class="tech-badge">AWS</span>
+                                    <span class="tech-badge">Docker</span>
+                                    <span class="tech-badge">MongoDB</span>
+                                    <span class="tech-badge">PostgreSQL</span>
+                                    <span class="tech-badge">Next.js</span>
+                                    <span class="tech-badge">Flutter</span>
+                                    <span class="tech-badge">OpenAI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How We Work -->
+                        <div class="process-section reveal-on-scroll">
+                            <div class="section-heading">
+                                <span class="hero-tag">◎ Our Process</span>
+                                <h2>How We Work</h2>
+                                <p class="text-muted">A proven workflow that delivers results on time, every time</p>
+                            </div>
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <div class="process-num">01</div>
+                                    <h3>Discover</h3>
+                                    <p>We dive deep into your goals, users, and market to define the perfect solution.</p>
+                                </div>
+                                <div class="process-connector"></div>
+                                <div class="process-step">
+                                    <div class="process-num">02</div>
+                                    <h3>Design</h3>
+                                    <p>Wireframes and prototypes bring your vision to life before a single line of code.</p>
+                                </div>
+                                <div class="process-connector"></div>
+                                <div class="process-step">
+                                    <div class="process-num">03</div>
+                                    <h3>Develop</h3>
+                                    <p>Agile sprints with weekly demos keep you in the loop as we build with precision.</p>
+                                </div>
+                                <div class="process-connector"></div>
+                                <div class="process-step">
+                                    <div class="process-num">04</div>
+                                    <h3>Deploy</h3>
+                                    <p>Launch, monitor, and iterate — we stay with you long after go-live.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonials -->
+                        <div class="testimonials-section reveal-on-scroll">
+                            <div class="section-heading">
+                                <span class="hero-tag">★ Client Stories</span>
+                                <h2>What Our Clients Say</h2>
+                            </div>
+                            <div class="testimonials-grid">
+                                <div class="testimonial-card glass-panel interactive-3d">
+                                    <div class="testimonial-stars">★★★★★</div>
+                                    <p class="testimonial-text">"NeuralStack transformed our outdated e-commerce platform into a sleek, high-converting storefront. Revenue jumped 40% within three months."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">SR</div>
+                                        <div>
+                                            <strong>Sarah Rahman</strong>
+                                            <span>CEO, RetailCo Global</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testimonial-card glass-panel interactive-3d">
+                                    <div class="testimonial-stars">★★★★★</div>
+                                    <p class="testimonial-text">"The FinTech dashboard they built is stunning. Our users love the real-time analytics, and the team was a pleasure to work with throughout."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">AK</div>
+                                        <div>
+                                            <strong>Ali Khan</strong>
+                                            <span>CTO, PayFlow Inc.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testimonial-card glass-panel interactive-3d">
+                                    <div class="testimonial-stars">★★★★★</div>
+                                    <p class="testimonial-text">"From AI chatbot integration to deployment, NeuralStack handled everything flawlessly. Truly a world-class software house."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">JM</div>
+                                        <div>
+                                            <strong>James Mitchell</strong>
+                                            <span>Director, TechVentures UK</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Journey Funnel -->
+                        <div class="funnel-section reveal-on-scroll" id="funnel-section">
+                            <div class="section-heading">
+                                <span class="hero-tag">▽ Conversion Funnel</span>
+                                <h2>Your Journey With Us</h2>
+                                <p class="text-muted">Every great product starts with a simple step. Here's how we turn visitors into partners.</p>
+                            </div>
+
+                            <div class="funnel-visual">
+                                <div class="funnel-stage funnel-stage-1" data-funnel-action="explore">
+                                    <div class="funnel-stage-bar">
+                                        <span class="funnel-icon">👁</span>
+                                        <div class="funnel-stage-info">
+                                            <strong>Awareness</strong>
+                                            <span>Discover NeuralStack</span>
+                                        </div>
+                                        <span class="funnel-pct">100%</span>
+                                    </div>
+                                </div>
+                                <div class="funnel-stage funnel-stage-2" data-funnel-action="services">
+                                    <div class="funnel-stage-bar">
+                                        <span class="funnel-icon">🔍</span>
+                                        <div class="funnel-stage-info">
+                                            <strong>Interest</strong>
+                                            <span>Explore our services</span>
+                                        </div>
+                                        <span class="funnel-pct">65%</span>
+                                    </div>
+                                </div>
+                                <div class="funnel-stage funnel-stage-3" data-funnel-action="projects">
+                                    <div class="funnel-stage-bar">
+                                        <span class="funnel-icon">📂</span>
+                                        <div class="funnel-stage-info">
+                                            <strong>Consideration</strong>
+                                            <span>Review our portfolio</span>
+                                        </div>
+                                        <span class="funnel-pct">40%</span>
+                                    </div>
+                                </div>
+                                <div class="funnel-stage funnel-stage-4" data-funnel-action="team">
+                                    <div class="funnel-stage-bar">
+                                        <span class="funnel-icon">🤝</span>
+                                        <div class="funnel-stage-info">
+                                            <strong>Intent</strong>
+                                            <span>Meet the team</span>
+                                        </div>
+                                        <span class="funnel-pct">20%</span>
+                                    </div>
+                                </div>
+                                <div class="funnel-stage funnel-stage-5" data-funnel-action="convert">
+                                    <div class="funnel-stage-bar">
+                                        <span class="funnel-icon">🚀</span>
+                                        <div class="funnel-stage-info">
+                                            <strong>Conversion</strong>
+                                            <span>Start your project</span>
+                                        </div>
+                                        <span class="funnel-pct">8%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="funnel-cta-row">
+                                <p>Ready to move down the funnel?</p>
+                                <button class="btn-primary" onclick="openFunnel()">Begin Free Consultation →</button>
+                            </div>
+                        </div>
+
+                        <!-- CTA Banner -->
+                        <div class="cta-banner glass-panel reveal-on-scroll">
+                            <div class="cta-content">
+                                <h2>Ready to Build Something Amazing?</h2>
+                                <p>Let's turn your idea into a production-ready product. Get a free consultation with our team today.</p>
+                            </div>
+                            <button class="btn-primary btn-lg" onclick="openFunnel()">Start Your Project →</button>
                         </div>
                         
                         <!-- Footer -->
@@ -343,11 +598,77 @@
 
                 <!-- Settings Section -->
                 <section id="settings-section" class="page-section">
+                    <div class="section-parallax-bg dashboard-bg-var" data-parallax="0.3"></div>
+                    <div class="section-parallax-overlay"></div>
                     <div class="section-brand-watermark">NeuralStack</div>
                     <div class="section-inner">
-                        <div class="glass-panel interactive-3d">
-                            <h2>Settings</h2>
-                            <p class="text-muted">Account settings and preferences.</p>
+                        <div class="contact-section reveal-on-scroll">
+                            <div class="section-heading">
+                                <span class="hero-tag">◎ Let's Connect</span>
+                                <h2>Get In Touch</h2>
+                                <p class="text-muted">Have a project in mind? We'd love to hear from you.</p>
+                            </div>
+                            <div class="contact-grid">
+                                <div class="contact-info glass-panel">
+                                    <h3>Contact Information</h3>
+                                    <div class="contact-detail">
+                                        <span class="contact-icon">📍</span>
+                                        <div>
+                                            <strong>Headquarters</strong>
+                                            <p>123 Creative Plaza, Sector Y, Lahore, Pakistan</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <span class="contact-icon">📞</span>
+                                        <div>
+                                            <strong>Phone</strong>
+                                            <p>+92 300 1234567</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <span class="contact-icon">✉️</span>
+                                        <div>
+                                            <strong>Email</strong>
+                                            <p>hello@neuralstack.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <span class="contact-icon">🕐</span>
+                                        <div>
+                                            <strong>Working Hours</strong>
+                                            <p>Mon – Fri, 9:00 AM – 6:00 PM PKT</p>
+                                        </div>
+                                    </div>
+                                    <div class="social-links">
+                                        <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                                        <a href="#" class="social-btn" aria-label="GitHub">gh</a>
+                                        <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+                                        <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+                                    </div>
+                                </div>
+                                <form class="contact-form glass-panel" onsubmit="handleContactSubmit(event)">
+                                    <h3>Send Us a Message</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-name">Full Name</label>
+                                            <input type="text" id="contact-name" placeholder="John Doe" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contact-email">Email</label>
+                                            <input type="email" id="contact-email" placeholder="john@company.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-subject">Subject</label>
+                                        <input type="text" id="contact-subject" placeholder="Project Inquiry" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-message">Message</label>
+                                        <textarea id="contact-message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-primary btn-full">Send Message →</button>
+                                </form>
+                            </div>
                         </div>
                         
                         <!-- Footer -->
@@ -369,6 +690,144 @@
         </div>
     </div>
 
-    <script src="script.js?v=3"></script>
+    <!-- Sticky Funnel Bar -->
+    <div class="funnel-sticky-bar" id="funnel-sticky-bar" aria-hidden="true">
+        <div class="funnel-sticky-inner">
+            <div class="funnel-sticky-text">
+                <strong>Turn your idea into reality</strong>
+                <span>Free consultation · No commitment · 3 quick steps</span>
+            </div>
+            <button class="btn-primary" onclick="openFunnel()">Start Now →</button>
+            <button class="funnel-sticky-close" onclick="closeStickyBar()" aria-label="Dismiss">✕</button>
+        </div>
+    </div>
+
+    <!-- Multi-Step Funnel Modal -->
+    <div class="funnel-overlay" id="funnel-overlay" aria-hidden="true">
+        <div class="funnel-modal glass-panel" role="dialog" aria-labelledby="funnel-title" aria-modal="true">
+            <button class="funnel-close" onclick="closeFunnel()" aria-label="Close">✕</button>
+
+            <!-- Progress -->
+            <div class="funnel-progress">
+                <div class="funnel-progress-track">
+                    <div class="funnel-progress-fill" id="funnel-progress-fill"></div>
+                </div>
+                <div class="funnel-steps-indicator">
+                    <span class="funnel-step-dot active" data-step="1">1</span>
+                    <span class="funnel-step-dot" data-step="2">2</span>
+                    <span class="funnel-step-dot" data-step="3">3</span>
+                    <span class="funnel-step-dot" data-step="4">✓</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Service -->
+            <div class="funnel-step active" data-funnel-step="1">
+                <h2 id="funnel-title">What are you building?</h2>
+                <p class="funnel-subtitle">Select the service that best matches your project.</p>
+                <div class="funnel-options">
+                    <label class="funnel-option">
+                        <input type="radio" name="funnel-service" value="Web Development">
+                        <span class="funnel-option-card">
+                            <span class="funnel-option-icon">🌐</span>
+                            <strong>Web Application</strong>
+                            <small>Websites, dashboards, SaaS</small>
+                        </span>
+                    </label>
+                    <label class="funnel-option">
+                        <input type="radio" name="funnel-service" value="Mobile App">
+                        <span class="funnel-option-card">
+                            <span class="funnel-option-icon">📱</span>
+                            <strong>Mobile App</strong>
+                            <small>iOS, Android, cross-platform</small>
+                        </span>
+                    </label>
+                    <label class="funnel-option">
+                        <input type="radio" name="funnel-service" value="UI/UX Design">
+                        <span class="funnel-option-card">
+                            <span class="funnel-option-icon">🎨</span>
+                            <strong>UI/UX Design</strong>
+                            <small>Wireframes, prototypes, branding</small>
+                        </span>
+                    </label>
+                    <label class="funnel-option">
+                        <input type="radio" name="funnel-service" value="AI Solution">
+                        <span class="funnel-option-card">
+                            <span class="funnel-option-icon">🤖</span>
+                            <strong>AI Solution</strong>
+                            <small>Chatbots, automation, LLM</small>
+                        </span>
+                    </label>
+                </div>
+                <button class="btn-primary btn-full funnel-next" onclick="funnelNext(1)">Continue →</button>
+            </div>
+
+            <!-- Step 2: Budget & Timeline -->
+            <div class="funnel-step" data-funnel-step="2">
+                <h2>Project scope</h2>
+                <p class="funnel-subtitle">Help us understand your timeline and budget range.</p>
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <div class="funnel-chips" id="funnel-budget">
+                        <button type="button" class="funnel-chip" data-value="Under $5K">Under $5K</button>
+                        <button type="button" class="funnel-chip" data-value="$5K – $15K">$5K – $15K</button>
+                        <button type="button" class="funnel-chip" data-value="$15K – $50K">$15K – $50K</button>
+                        <button type="button" class="funnel-chip" data-value="$50K+">$50K+</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Timeline</label>
+                    <div class="funnel-chips" id="funnel-timeline">
+                        <button type="button" class="funnel-chip" data-value="ASAP (< 1 month)">ASAP</button>
+                        <button type="button" class="funnel-chip" data-value="1 – 3 months">1 – 3 months</button>
+                        <button type="button" class="funnel-chip" data-value="3 – 6 months">3 – 6 months</button>
+                        <button type="button" class="funnel-chip" data-value="Flexible">Flexible</button>
+                    </div>
+                </div>
+                <div class="funnel-nav-row">
+                    <button class="btn-outline funnel-back" onclick="funnelBack(2)">← Back</button>
+                    <button class="btn-primary funnel-next" onclick="funnelNext(2)">Continue →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Contact -->
+            <div class="funnel-step" data-funnel-step="3">
+                <h2>Almost there!</h2>
+                <p class="funnel-subtitle">Leave your details and we'll reach out within 24 hours.</p>
+                <div class="form-group">
+                    <label for="funnel-name">Full Name</label>
+                    <input type="text" id="funnel-name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="funnel-email">Email</label>
+                    <input type="email" id="funnel-email" placeholder="you@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="funnel-phone">Phone (optional)</label>
+                    <input type="tel" id="funnel-phone" placeholder="+92 300 0000000">
+                </div>
+                <div class="form-group">
+                    <label for="funnel-notes">Tell us more (optional)</label>
+                    <textarea id="funnel-notes" rows="3" placeholder="Brief project description..."></textarea>
+                </div>
+                <div class="funnel-nav-row">
+                    <button class="btn-outline funnel-back" onclick="funnelBack(3)">← Back</button>
+                    <button class="btn-primary funnel-next" onclick="funnelNext(3)">Submit & Book Call →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Success -->
+            <div class="funnel-step" data-funnel-step="4">
+                <div class="funnel-success">
+                    <div class="funnel-success-icon">✓</div>
+                    <h2>You're in the funnel!</h2>
+                    <p class="funnel-subtitle">We've received your request. A NeuralStack specialist will contact you within 24 hours.</p>
+                    <div class="funnel-summary glass-panel" id="funnel-summary"></div>
+                    <button class="btn-primary btn-full" onclick="closeFunnel()">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=5"></script>
 </body>
 </html>
