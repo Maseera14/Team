@@ -48,7 +48,8 @@ function showSection(targetId, title) {
     pageSections.forEach(s => s.classList.remove('active-section'));
     const target = document.getElementById(targetId);
     if (target) target.classList.add('active-section');
-    if (title) pageTitle.textContent = title;
+    // Title is set to permanent brand header "NeuralStack" and not updated dynamically
+    // if (title) pageTitle.textContent = title;
 
     backBtn.classList.toggle('hidden', targetId !== 'profile-section');
     

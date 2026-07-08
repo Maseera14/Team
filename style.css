@@ -302,9 +302,14 @@ header {
     gap: 1rem;
 }
 #page-title {
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.5px;
     font-size: 1.4rem;
+    background: linear-gradient(135deg, var(--text-color), var(--accent-color), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Space Grotesk', sans-serif;
 }
 .btn-toggle, .btn-secondary {
     padding: 0.55rem 1.2rem;
@@ -393,7 +398,7 @@ header {
 }
 .section-inner {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 2.5rem;
     width: 100%;
 }
@@ -934,15 +939,15 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(3.5rem, 14vw, 11rem);
+    font-size: clamp(4rem, 16vw, 13rem);
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: -4px;
+    letter-spacing: -5px;
     color: var(--text-color);
-    opacity: 0.035;
+    opacity: 0.065;
     pointer-events: none;
     user-select: none;
-    z-index: 0;
+    z-index: 2;
     text-align: center;
     white-space: nowrap;
 }
