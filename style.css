@@ -232,10 +232,10 @@ header .btn-secondary:hover {
     gap: 0.75rem;
 }
 .brand-logo {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     background: var(--card-bg);
@@ -245,8 +245,8 @@ header .btn-secondary:hover {
     transform: scale(1.08) rotate(5deg);
 }
 .header-logo {
-    width: 36px;
-    height: 36px;
+    width: 54px;
+    height: 54px;
 }
 #page-title {
     font-weight: 800;
