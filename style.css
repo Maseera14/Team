@@ -926,6 +926,28 @@ header {
 }
 
 /* ═══════════════════════════════════════════
+   BRAND WATERMARK
+═══════════════════════════════════════════ */
+.section-brand-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3.5rem, 14vw, 11rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -4px;
+    color: var(--text-color);
+    opacity: 0.035;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
    RESPONSIVE DESIGN (MEDIA QUERIES)
 ═══════════════════════════════════════════ */
 
