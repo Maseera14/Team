@@ -9,40 +9,12 @@ themeToggle.addEventListener('click', () => {
 });
 
 // ═══════════════════════════════════════════
-//  SIDEBAR NAVIGATION
+//  TOP NAVIGATION
 // ═══════════════════════════════════════════
-const menuItems    = document.querySelectorAll('.sidebar-menu li');
+const menuItems    = document.querySelectorAll('.nav-menu li');
 const pageSections = document.querySelectorAll('.page-section');
 const pageTitle    = document.getElementById('page-title');
 const backBtn      = document.getElementById('back-btn');
-
-// Collapsible Sidebar Elements
-const sidebar         = document.querySelector('.sidebar');
-const sidebarToggle   = document.getElementById('sidebar-toggle');
-const sidebarClose    = document.getElementById('sidebar-close');
-const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-
-function closeSidebar() {
-    if (sidebar) sidebar.classList.remove('open');
-    if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
-    const mainCont = document.querySelector('.main-content');
-    if (mainCont) mainCont.classList.remove('blur-active');
-}
-
-if (sidebarToggle) {
-    sidebarToggle.addEventListener('click', () => {
-        if (sidebar) sidebar.classList.add('open');
-        if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
-        const mainCont = document.querySelector('.main-content');
-        if (mainCont) mainCont.classList.add('blur-active');
-    });
-}
-if (sidebarClose) {
-    sidebarClose.addEventListener('click', closeSidebar);
-}
-if (sidebarBackdrop) {
-    sidebarBackdrop.addEventListener('click', closeSidebar);
-}
 
 function showSection(targetId, title) {
     pageSections.forEach(s => s.classList.remove('active-section'));
@@ -52,9 +24,6 @@ function showSection(targetId, title) {
     // if (title) pageTitle.textContent = title;
 
     backBtn.classList.toggle('hidden', targetId !== 'profile-section');
-    
-    // Close sidebar on section navigation
-    closeSidebar();
 
     // Re-run parallax on scroll when section changes
     setTimeout(updateParallax, 50);
