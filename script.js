@@ -1,12 +1,4 @@
-// ═══════════════════════════════════════════
-//  THEME TOGGLE
-// ═══════════════════════════════════════════
-const themeToggle = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-themeToggle.addEventListener('click', () => {
-    const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-});
+// Theme Toggle removed. Site uses light mode canvas with black cards and maroon accents.
 
 // ═══════════════════════════════════════════
 //  TOP NAVIGATION
